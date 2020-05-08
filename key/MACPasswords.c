@@ -101,7 +101,7 @@ void MACPassword (unsigned device, char const charset [], unsigned limit, unsign
 	while (count--)
 	{
 		unsigned index = MACRand () % limit;
-		putc (charset [index & limit], stdout);
+		putc (charset [index], stdout);
 		if ((count) && (group) && !(count % group))
 		{
 			putc (space, stdout);
@@ -127,7 +127,7 @@ void MACPassword (unsigned device, char const charset [], unsigned limit, unsign
 void MACPasswords (unsigned vendor, unsigned device, unsigned number, unsigned count, unsigned group, char space, flag_t flags)
 
 {
-	char charset [UCHAR_MAX];
+	char charset [UCHAR_MAX+1];
 	unsigned offset = 0;
 	if (vendor >> 24)
 	{
